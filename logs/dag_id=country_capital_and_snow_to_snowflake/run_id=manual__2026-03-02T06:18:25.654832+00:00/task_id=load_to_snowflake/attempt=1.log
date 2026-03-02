@@ -1,0 +1,70 @@
+[2026-03-02T06:18:35.855+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-02T06:18:35.867+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: country_capital_and_snow_to_snowflake.load_to_snowflake manual__2026-03-02T06:18:25.654832+00:00 [queued]>
+[2026-03-02T06:18:35.870+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: country_capital_and_snow_to_snowflake.load_to_snowflake manual__2026-03-02T06:18:25.654832+00:00 [queued]>
+[2026-03-02T06:18:35.871+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-03-02T06:18:35.882+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_to_snowflake> on 2026-03-02 06:18:25.654832+00:00
+[2026-03-02T06:18:35.891+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=7947) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-03-02T06:18:35.893+0000] {standard_task_runner.py:63} INFO - Started process 7949 to run task
+[2026-03-02T06:18:35.894+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'country_capital_and_snow_to_snowflake', 'load_to_snowflake', 'manual__2026-03-02T06:18:25.654832+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/country_capital_and_snow_to_snowflake.py', '--cfg-path', '/tmp/tmpax_4wjud']
+[2026-03-02T06:18:35.895+0000] {standard_task_runner.py:91} INFO - Job 25: Subtask load_to_snowflake
+[2026-03-02T06:18:35.941+0000] {task_command.py:426} INFO - Running <TaskInstance: country_capital_and_snow_to_snowflake.load_to_snowflake manual__2026-03-02T06:18:25.654832+00:00 [running]> on host c5b62ad91d58
+[2026-03-02T06:18:36.012+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='country_capital_and_snow_to_snowflake' AIRFLOW_CTX_TASK_ID='load_to_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2026-03-02T06:18:25.654832+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-02T06:18:25.654832+00:00'
+[2026-03-02T06:18:36.013+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-02T06:18:36.019+0000] {base.py:84} INFO - Using connection ID 'snowflake_conn' for task execution.
+[2026-03-02T06:18:36.020+0000] {connection.py:399} INFO - Snowflake Connector for Python Version: 3.10.0, Python Version: 3.12.3, Platform: Linux-6.12.69-linuxkit-aarch64-with-glibc2.36
+[2026-03-02T06:18:36.020+0000] {connection.py:1239} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2026-03-02T06:18:37.119+0000] {cursor.py:1149} INFO - Number of results in first chunk: 1
+[2026-03-02T06:18:37.292+0000] {cursor.py:1149} INFO - Number of results in first chunk: 1
+[2026-03-02T06:18:37.444+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-02T06:18:37.453+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/opt/airflow/dags/country_capital_and_snow_to_snowflake.py", line 129, in load_to_snowflake
+    cur.execute("USE SCHEMA PUBLIC;")
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/cursor.py", line 1080, in execute
+    Error.errorhandler_wrapper(self.connection, self, error_class, errvalue)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 290, in errorhandler_wrapper
+    handed_over = Error.hand_to_other_handler(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 345, in hand_to_other_handler
+    cursor.errorhandler(connection, cursor, error_class, error_value)
+  File "/home/airflow/.local/lib/python3.12/site-packages/snowflake/connector/errors.py", line 221, in default_errorhandler
+    raise error_class(
+snowflake.connector.errors.ProgrammingError: 002043 (02000): 01c2c0ba-0307-f2e7-001b-e5430029e882: SQL compilation error:
+Object does not exist, or operation cannot be performed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/country_capital_and_snow_to_snowflake.py", line 137, in load_to_snowflake
+    raise AirflowException(f"Snowflake load failed: {e}")
+airflow.exceptions.AirflowException: Snowflake load failed: 002043 (02000): 01c2c0ba-0307-f2e7-001b-e5430029e882: SQL compilation error:
+Object does not exist, or operation cannot be performed.
+[2026-03-02T06:18:37.462+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=country_capital_and_snow_to_snowflake, task_id=load_to_snowflake, run_id=manual__2026-03-02T06:18:25.654832+00:00, execution_date=20260302T061825, start_date=20260302T061835, end_date=20260302T061837
+[2026-03-02T06:18:37.475+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 25 for task load_to_snowflake (Snowflake load failed: 002043 (02000): 01c2c0ba-0307-f2e7-001b-e5430029e882: SQL compilation error:
+Object does not exist, or operation cannot be performed.; 7949)
+[2026-03-02T06:18:37.504+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-03-02T06:18:37.537+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-02T06:18:37.541+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

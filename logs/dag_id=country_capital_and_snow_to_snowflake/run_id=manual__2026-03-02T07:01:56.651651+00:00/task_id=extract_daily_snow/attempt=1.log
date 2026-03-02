@@ -1,0 +1,20 @@
+[2026-03-02T07:02:04.676+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-02T07:02:04.731+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: country_capital_and_snow_to_snowflake.extract_daily_snow manual__2026-03-02T07:01:56.651651+00:00 [queued]>
+[2026-03-02T07:02:04.739+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: country_capital_and_snow_to_snowflake.extract_daily_snow manual__2026-03-02T07:01:56.651651+00:00 [queued]>
+[2026-03-02T07:02:04.741+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-03-02T07:02:04.764+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): extract_daily_snow> on 2026-03-02 07:01:56.651651+00:00
+[2026-03-02T07:02:04.783+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=8534) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2026-03-02T07:02:04.787+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'country_capital_and_snow_to_snowflake', 'extract_daily_snow', 'manual__2026-03-02T07:01:56.651651+00:00', '--job-id', '28', '--raw', '--subdir', 'DAGS_FOLDER/country_capital_and_snow_to_snowflake.py', '--cfg-path', '/tmp/tmphzej7a9u']
+[2026-03-02T07:02:04.789+0000] {standard_task_runner.py:91} INFO - Job 28: Subtask extract_daily_snow
+[2026-03-02T07:02:04.789+0000] {standard_task_runner.py:63} INFO - Started process 8538 to run task
+[2026-03-02T07:02:04.835+0000] {task_command.py:426} INFO - Running <TaskInstance: country_capital_and_snow_to_snowflake.extract_daily_snow manual__2026-03-02T07:01:56.651651+00:00 [running]> on host c5b62ad91d58
+[2026-03-02T07:02:04.904+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='country_capital_and_snow_to_snowflake' AIRFLOW_CTX_TASK_ID='extract_daily_snow' AIRFLOW_CTX_EXECUTION_DATE='2026-03-02T07:01:56.651651+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-02T07:01:56.651651+00:00'
+[2026-03-02T07:02:04.911+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-02T07:02:05.875+0000] {python.py:237} INFO - Done. Returned value was: {'latitude': 37.347546, 'longitude': -121.88084, 'generationtime_ms': 0.07462501525878906, 'utc_offset_seconds': -28800, 'timezone': 'America/Los_Angeles', 'timezone_abbreviation': 'GMT-8', 'elevation': 29.0, 'daily_units': {'time': 'iso8601', 'snowfall_sum': 'cm'}, 'daily': {'time': ['2026-03-01', '2026-03-02', '2026-03-03', '2026-03-04', '2026-03-05', '2026-03-06', '2026-03-07'], 'snowfall_sum': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}}
+[2026-03-02T07:02:05.889+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-02T07:02:06.115+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=country_capital_and_snow_to_snowflake, task_id=extract_daily_snow, run_id=manual__2026-03-02T07:01:56.651651+00:00, execution_date=20260302T070156, start_date=20260302T070204, end_date=20260302T070206
+[2026-03-02T07:02:06.229+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2026-03-02T07:02:06.327+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-03-02T07:02:06.330+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
