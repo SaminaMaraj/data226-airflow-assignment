@@ -1,13 +1,6 @@
-# Python
 __pycache__/
+**/__pycache__/
 *.pyc
-
-# Airflow
-logs/
-*.log
-
-# Environment files
 .env
+logs/
 
-# MacOS
-.DS_Store
